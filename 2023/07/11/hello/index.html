@@ -332,12 +332,12 @@
 
 
 
-<h2 id="解决npm-install报错"><a href="#解决npm-install报错" class="headerlink" title="解决npm install报错"></a>解决npm install报错</h2><p><a href="mailto:&#x6e;&#111;&#100;&#101;&#x2d;&#x73;&#x61;&#115;&#x73;&#x40;&#52;&#46;&#x31;&#x34;&#46;&#49;">&#x6e;&#111;&#100;&#101;&#x2d;&#x73;&#x61;&#115;&#x73;&#x40;&#52;&#46;&#x31;&#x34;&#46;&#49;</a> postinstall: <code>node scripts/build.js</code>的问题</p>
+<h2 id="解决npm-install报错"><a href="#解决npm-install报错" class="headerlink" title="解决npm install报错"></a>解决npm install报错</h2><p><a href="mailto:&#110;&#111;&#100;&#x65;&#x2d;&#115;&#97;&#115;&#115;&#x40;&#x34;&#46;&#x31;&#x34;&#x2e;&#x31;">&#110;&#111;&#100;&#x65;&#x2d;&#115;&#97;&#115;&#115;&#x40;&#x34;&#46;&#x31;&#x34;&#x2e;&#x31;</a> postinstall: <code>node scripts/build.js</code>的问题</p>
 <p>npm install 时报错如下图</p>
 <img src="/2023/07/11/hello/07/11/hello/20201021154850826.png" srcset="/img/loading.gif" lazyload class title="报错">
 
 <p>一开始看Error信息：<br>Error: Can’t find Python executable “python”, you can set the PYTHON env variable.<br>没有python，太奇怪了，然后找了各种方法也没有解决</p>
-<p>后来看可能还是因为node-sass报错：<br><a href="mailto:&#110;&#x6f;&#100;&#x65;&#x2d;&#115;&#97;&#115;&#x73;&#x40;&#x34;&#46;&#49;&#x34;&#x2e;&#49;">&#110;&#x6f;&#100;&#x65;&#x2d;&#115;&#97;&#115;&#x73;&#x40;&#x34;&#46;&#49;&#x34;&#x2e;&#49;</a> postinstall: node scripts&#x2F;build.js</p>
+<p>后来看可能还是因为node-sass报错：<br><a href="mailto:&#x6e;&#x6f;&#100;&#101;&#x2d;&#115;&#97;&#x73;&#115;&#x40;&#52;&#x2e;&#49;&#x34;&#x2e;&#x31;">&#x6e;&#x6f;&#100;&#101;&#x2d;&#115;&#97;&#x73;&#115;&#x40;&#52;&#x2e;&#49;&#x34;&#x2e;&#x31;</a> postinstall: node scripts&#x2F;build.js</p>
 <h4 id="然后找到一个办法："><a href="#然后找到一个办法：" class="headerlink" title="然后找到一个办法："></a>然后找到一个办法：</h4><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">npm<span class="hljs-built_in"> config </span><span class="hljs-built_in">set</span> <span class="hljs-attribute">sass_binary_site</span>=https://npm.taobao.org/mirrors/node-sass<br></code></pre></td></tr></table></figure>
 
 <h4 id="然后重新install"><a href="#然后重新install" class="headerlink" title="然后重新install"></a>然后重新install</h4><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">npm install  <span class="hljs-keyword">node</span><span class="hljs-title">-sass</span>@<span class="hljs-number">4.14</span><br></code></pre></td></tr></table></figure>
