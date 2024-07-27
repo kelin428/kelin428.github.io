@@ -26,16 +26,16 @@
 <meta property="og:site_name" content="Kelin&#39;s Blog">
 <meta property="og:description" content="错误现象 :主要是node-sass版本问题，他的版本看和node版本对应 123456789npm ERR! code ELIFECYCLEnpm ERR! errno 1npm ERR! node-sass@4.13.1 postinstall: node scripts&#x2F;build.jsnpm ERR! Exit status 1npm ERR!npm ERR! Failed at the">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/.com//20210610220830132.png">
-<meta property="og:image" content="http://example.com/.com//20210610220101374.png">
-<meta property="og:image" content="http://example.com/.com//2021061022021281.png">
-<meta property="og:image" content="http://example.com/.com//20201021154850826.png">
+<meta property="og:image" content="http://example.com/2023/07/11/hello/07/11/hello/20210610220830132.png">
+<meta property="og:image" content="http://example.com/2023/07/11/hello/07/11/hello/20210610220101374.png">
+<meta property="og:image" content="http://example.com/2023/07/11/hello/07/11/hello/2021061022021281.png">
+<meta property="og:image" content="http://example.com/2023/07/11/hello/07/11/hello/20201021154850826.png">
 <meta property="article:published_time" content="2023-07-11T12:29:12.000Z">
 <meta property="article:modified_time" content="2023-07-11T12:41:44.000Z">
 <meta property="article:author" content="Kelin">
 <meta property="article:tag" content="Vue">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/.com//20210610220830132.png">
+<meta name="twitter:image" content="http://example.com/2023/07/11/hello/07/11/hello/20210610220830132.png">
   
   
   
@@ -306,15 +306,18 @@
                 <h2 id="错误现象"><a href="#错误现象" class="headerlink" title="错误现象 :"></a>错误现象 :</h2><p>主要是node-sass版本问题，他的版本看和node版本对应</p>
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">npm</span> ERR! code ELIFECYCLE<br><span class="hljs-attribute">npm</span> ERR! errno <span class="hljs-number">1</span><br><span class="hljs-attribute">npm</span> ERR! node-sass@<span class="hljs-number">4</span>.<span class="hljs-number">13</span>.<span class="hljs-number">1</span> postinstall: node scripts/build.js<br><span class="hljs-attribute">npm</span> ERR! Exit status <span class="hljs-number">1</span><br><span class="hljs-attribute">npm</span> ERR!<br><span class="hljs-attribute">npm</span> ERR! Failed at the node-sass@<span class="hljs-number">4</span>.<span class="hljs-number">13</span>.<span class="hljs-number">1</span> postinstall script.<br><span class="hljs-attribute">npm</span> ERR! This is probably not a problem with npm. There is likely additional logging output above.<br><span class="hljs-attribute">npm</span> ERR! A complete log of this run can be found in:<br><span class="hljs-attribute">npm</span> ERR! C:\Users\cpucode\AppData\Roaming\npm-cache_logs\<span class="hljs-number">2021</span>-<span class="hljs-number">06</span>-<span class="hljs-number">10</span>T13_48_01_433Z-debug.log<br></code></pre></td></tr></table></figure>
 
-<p><img src="/.com//20210610220830132.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<img src="/2023/07/11/hello/07/11/hello/20210610220830132.png" srcset="/img/loading.gif" lazyload class title="img">
+
 <h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案 :"></a>解决方案 :</h2><p>使用对应的版本</p>
 <p><a target="_blank" rel="noopener" href="https://hub.fastgit.org/sass/node-sass">https://hub.fastgit.org/sass/node-sass</a></p>
 <p>都可以看到node和node-sass对应的版本信息</p>
-<p><img src="/.com//20210610220101374.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<img src="/2023/07/11/hello/07/11/hello/20210610220101374.png" srcset="/img/loading.gif" lazyload class title="在这里插入图片描述">
+
 <p>查看版本</p>
 <figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs crmsh"><span class="hljs-keyword">node</span> <span class="hljs-title">-v</span><br></code></pre></td></tr></table></figure>
 
-<p><img src="/.com//2021061022021281.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<img src="/2023/07/11/hello/07/11/hello/2021061022021281.png" srcset="/img/loading.gif" lazyload class title="在这里插入图片描述">
+
 <p>与 4.14 对应</p>
 <h2 id="卸载残留问题"><a href="#卸载残留问题" class="headerlink" title="卸载残留问题"></a>卸载残留问题</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">先清依赖残留，否则安装不上<br></code></pre></td></tr></table></figure>
 
@@ -329,11 +332,12 @@
 
 
 
-<h2 id="解决npm-install报错"><a href="#解决npm-install报错" class="headerlink" title="解决npm install报错"></a>解决npm install报错</h2><p><a href="mailto:&#110;&#x6f;&#x64;&#x65;&#x2d;&#x73;&#97;&#x73;&#115;&#x40;&#52;&#x2e;&#x31;&#x34;&#x2e;&#x31;">&#110;&#x6f;&#x64;&#x65;&#x2d;&#x73;&#97;&#x73;&#115;&#x40;&#52;&#x2e;&#x31;&#x34;&#x2e;&#x31;</a> postinstall: <code>node scripts/build.js</code>的问题</p>
+<h2 id="解决npm-install报错"><a href="#解决npm-install报错" class="headerlink" title="解决npm install报错"></a>解决npm install报错</h2><p><a href="mailto:&#x6e;&#111;&#x64;&#x65;&#45;&#x73;&#97;&#x73;&#x73;&#x40;&#52;&#46;&#x31;&#52;&#x2e;&#49;">&#x6e;&#111;&#x64;&#x65;&#45;&#x73;&#97;&#x73;&#x73;&#x40;&#52;&#46;&#x31;&#52;&#x2e;&#49;</a> postinstall: <code>node scripts/build.js</code>的问题</p>
 <p>npm install 时报错如下图</p>
-<p><img src="/.com//20201021154850826.png" srcset="/img/loading.gif" lazyload alt="报错"></p>
+<img src="/2023/07/11/hello/07/11/hello/20201021154850826.png" srcset="/img/loading.gif" lazyload class title="报错">
+
 <p>一开始看Error信息：<br>Error: Can’t find Python executable “python”, you can set the PYTHON env variable.<br>没有python，太奇怪了，然后找了各种方法也没有解决</p>
-<p>后来看可能还是因为node-sass报错：<br><a href="mailto:&#x6e;&#x6f;&#100;&#101;&#x2d;&#115;&#97;&#115;&#115;&#x40;&#52;&#x2e;&#x31;&#52;&#46;&#49;">&#x6e;&#x6f;&#100;&#101;&#x2d;&#115;&#97;&#115;&#115;&#x40;&#52;&#x2e;&#x31;&#52;&#46;&#49;</a> postinstall: node scripts&#x2F;build.js</p>
+<p>后来看可能还是因为node-sass报错：<br><a href="mailto:&#x6e;&#111;&#100;&#101;&#x2d;&#115;&#97;&#115;&#x73;&#64;&#x34;&#46;&#x31;&#x34;&#46;&#49;">&#x6e;&#111;&#100;&#101;&#x2d;&#115;&#97;&#115;&#x73;&#64;&#x34;&#46;&#x31;&#x34;&#46;&#49;</a> postinstall: node scripts&#x2F;build.js</p>
 <h4 id="然后找到一个办法："><a href="#然后找到一个办法：" class="headerlink" title="然后找到一个办法："></a>然后找到一个办法：</h4><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">npm<span class="hljs-built_in"> config </span><span class="hljs-built_in">set</span> <span class="hljs-attribute">sass_binary_site</span>=https://npm.taobao.org/mirrors/node-sass<br></code></pre></td></tr></table></figure>
 
 <h4 id="然后重新install"><a href="#然后重新install" class="headerlink" title="然后重新install"></a>然后重新install</h4><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">npm install  <span class="hljs-keyword">node</span><span class="hljs-title">-sass</span>@<span class="hljs-number">4.14</span><br></code></pre></td></tr></table></figure>
