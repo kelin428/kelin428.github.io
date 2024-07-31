@@ -19,16 +19,16 @@
   <meta name="author" content="Kelin">
   <meta name="keywords" content="">
   
-    <meta name="description" content="深入学习Go语言的切片">
+    <meta name="description" content="整理常见的Go语言基础，主要包括defer 、iota、interface、any、reflect、闭包、recover、读写锁、泛型">
 <meta property="og:type" content="article">
-<meta property="og:title" content="深入学习Go语言：数据结构-切片">
-<meta property="og:url" content="http://example.com/2024/07/27/learn_go_slice/index.html">
+<meta property="og:title" content="整理常见的Go语言基础">
+<meta property="og:url" content="http://example.com/2024/07/28/%E6%95%B4%E7%90%86%E9%9D%A2%E8%AF%95%E4%B8%AD%E5%B8%B8%E8%A7%81%E7%9A%84Go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/index.html">
 <meta property="og:site_name" content="Kelin&#39;s Blog">
-<meta property="og:description" content="深入学习Go语言的切片">
+<meta property="og:description" content="整理常见的Go语言基础，主要包括defer 、iota、interface、any、reflect、闭包、recover、读写锁、泛型">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/247/slice.png">
-<meta property="article:published_time" content="2024-07-27T10:25:16.000Z">
-<meta property="article:modified_time" content="2024-07-27T15:58:41.044Z">
+<meta property="article:published_time" content="2024-07-28T02:36:42.000Z">
+<meta property="article:modified_time" content="2024-07-31T07:30:44.957Z">
 <meta property="article:author" content="Kelin">
 <meta property="article:tag" content="golang">
 <meta name="twitter:card" content="summary_large_image">
@@ -36,7 +36,7 @@
   
   
   
-  <title>深入学习Go语言：数据结构-切片 - Kelin&#39;s Blog</title>
+  <title>整理常见的Go语言基础 - Kelin&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -229,7 +229,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="深入学习Go语言：数据结构-切片"></span>
+            <span id="subtitle" data-typed-text="整理常见的Go语言基础"></span>
           
         </div>
 
@@ -240,8 +240,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-07-27 18:25" pubdate>
-          2024年7月27日 晚上
+        <time datetime="2024-07-28 10:36" pubdate>
+          2024年7月28日 上午
         </time>
       </span>
     
@@ -252,7 +252,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          686 字
+          200 字
         
       </span>
     
@@ -263,7 +263,7 @@
         
         
         
-          6 分钟
+          2 分钟
         
       </span>
     
@@ -309,43 +309,19 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">深入学习Go语言：数据结构-切片</h1>
+            <h1 id="seo-header">整理常见的Go语言基础</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="深入学习Go语言的切片"><a href="#深入学习Go语言的切片" class="headerlink" title="深入学习Go语言的切片"></a>深入学习Go语言的切片</h1><p>在go语言的实际开发中，我们使用更多的是切片而不是数组，数组的固定长度注定了只能在一些特殊的场景下才更具优势。</p>
-<p>切片就像go语言内置的“动态数组”，与数组相比切片的长度往往是固定的，可以追加元素，在追加时可以使切片的容量增大。</p>
-<p><strong>今天我们主要学习探讨的是切片函数传值、切片动态扩容、切片对底层数组的引用等问题</strong></p>
-<h2 id="一、什么是切片？"><a href="#一、什么是切片？" class="headerlink" title="一、什么是切片？"></a>一、什么是切片？</h2><ol>
-<li><p>在Go语言中，<strong>切片</strong>（slice）是对数组的一个抽象。切片比数组更灵活、功能更强大，是Go语言中非常常用的数据结构。切片本质上是一个指向数组的引用，因此它是引用类型。</p>
-<br>
-</li>
-<li><p>你可以声明一个未指定大小的数组来定义<strong>切片</strong>：</p>
-</li>
-</ol>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">var</span> identifier []<span class="hljs-keyword">type</span><br></code></pre></td></tr></table></figure>
+                <h1 id="整理面试中常见的Go语言基础"><a href="#整理面试中常见的Go语言基础" class="headerlink" title="整理面试中常见的Go语言基础"></a>整理面试中常见的Go语言基础</h1><h2 id="一、Go语言中的错误处理——recover和panic"><a href="#一、Go语言中的错误处理——recover和panic" class="headerlink" title="一、Go语言中的错误处理——recover和panic"></a>一、Go语言中的错误处理——recover和panic</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p><strong>panic</strong> 与 <strong>recover</strong> 是 Go 的两个内置函数，这两个内置函数用于处理 Go 运行时的错误，panic 用于主动抛出错误，recover 用来捕获 panic 抛出的错误。<br></p>
+<p>当发生运行时异常时，程序会出现panic，造成严重的线上事故，使用recover可以避免这种严重的线上事务。</p>
 
-<p>切片有两个重要的参数：长度、容量</p>
-<p>使用 make() 函数来创建切片:</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">var</span> slice1 []<span class="hljs-keyword">type</span> = <span class="hljs-built_in">make</span>([]<span class="hljs-keyword">type</span>, <span class="hljs-built_in">len</span>, capacity)<br><br>也可以简写为<br><br>slice1 := <span class="hljs-built_in">make</span>([]T, length, capacity)<br></code></pre></td></tr></table></figure>
+<img class=".png.jpg This is an example image">
 
 
-
-<h2 id="二、切片的底层原理？"><a href="#二、切片的底层原理？" class="headerlink" title="二、切片的底层原理？"></a>二、切片的底层原理？</h2><h3 id="切片的函数传值"><a href="#切片的函数传值" class="headerlink" title="切片的函数传值"></a>切片的函数传值</h3><p>有一天我水群的时候看到群友遇到了一个问题：</p>
-<p>问：这段代码中，容量为5，长度为0，append一个元素，明显不会触发扩容，为什么结果却没有修改切片呢</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>	slice := <span class="hljs-built_in">make</span>([]<span class="hljs-type">int</span>, <span class="hljs-number">0</span>, <span class="hljs-number">5</span>)<br><br>	ap(slice)<br>	fmt.Println(slice)<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">ap</span><span class="hljs-params">(slice []<span class="hljs-type">int</span>)</span></span> &#123;<br>	slice = <span class="hljs-built_in">append</span>(slice, <span class="hljs-number">1</span>)<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>总所周知切片作为一种数据类型，作为值在函数中传递时是值传递，实际上在go语言中所有的类型传递都是值传递，而不是引用传递。</p>
-<p>但是就算是值传递，切片副本与原切片指向的底层数组是相同的。在副本中append，底层数组的长度从0变成1，但是原切片的长度是0，因此虽然底层数组改变了但原切片也看不到只能显示[]</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>	slice := <span class="hljs-built_in">make</span>([]<span class="hljs-type">int</span>, <span class="hljs-number">0</span>, <span class="hljs-number">5</span>)<br><br>	ap(slice)  <br>	fmt.Println(slice) <span class="hljs-comment">// []</span><br>    slice.<span class="hljs-built_in">len</span> = <span class="hljs-number">1</span>      <span class="hljs-comment">// 假如可以更改len属性的话</span><br>    fmt.Println(slice) <span class="hljs-comment">// [1]</span><br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">ap</span><span class="hljs-params">(slice []<span class="hljs-type">int</span>)</span></span> &#123;<br>	slice = <span class="hljs-built_in">append</span>(slice, <span class="hljs-number">1</span>) <br>&#125;<br></code></pre></td></tr></table></figure>
-
-
-<h2 id="三、切片面试题"><a href="#三、切片面试题" class="headerlink" title="三、切片面试题"></a>三、切片面试题</h2><h3 id="一、打印结果"><a href="#一、打印结果" class="headerlink" title="一、打印结果"></a>一、打印结果</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>	s := []<span class="hljs-type">int</span>&#123;<span class="hljs-number">5</span>, <span class="hljs-number">6</span>&#125;<br>	s = <span class="hljs-built_in">append</span>(s, <span class="hljs-number">7</span>)<br><br>	x := <span class="hljs-built_in">append</span>(s, <span class="hljs-number">8</span>)<br>	y := <span class="hljs-built_in">append</span>(s, <span class="hljs-number">9</span>)<br><br>	fmt.Println(<span class="hljs-string">&quot;t:&quot;</span>, s, x, y)<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<h3 id="二、打印结果"><a href="#二、打印结果" class="headerlink" title="二、打印结果"></a>二、打印结果</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">test5</span><span class="hljs-params">()</span></span> &#123;<br>    a := []<span class="hljs-type">byte</span>(<span class="hljs-string">&quot;AAAA/BBBBB&quot;</span>)<br>    index := bytes.IndexByte(a, <span class="hljs-string">&#x27;/&#x27;</span>)<br>    b := a[:index]<br>    c := a[index+<span class="hljs-number">1</span>:]<br>    b = <span class="hljs-built_in">append</span>(b, <span class="hljs-string">&quot;CCC&quot;</span>...)<br>    fmt.Println(<span class="hljs-string">&quot;test5:&quot;</span>, <span class="hljs-type">string</span>(a))<br>    fmt.Println(<span class="hljs-string">&quot;test5:&quot;</span>, <span class="hljs-type">string</span>(b))<br>    fmt.Println(<span class="hljs-string">&quot;test5:&quot;</span>, <span class="hljs-type">string</span>(c))<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<h3 id="三、打印结果"><a href="#三、打印结果" class="headerlink" title="三、打印结果"></a>三、打印结果</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">s0</span><span class="hljs-params">()</span></span> &#123;<br>    s := []<span class="hljs-type">int</span>&#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>&#125;<br>    x := s[:<span class="hljs-number">1</span>]<br>    y := s[<span class="hljs-number">2</span>:]<br><br>    x = <span class="hljs-built_in">append</span>(x, y...)<br>    x = <span class="hljs-built_in">append</span>(x, y...)<br><br>    fmt.Println(<span class="hljs-string">&quot;s0: s=&quot;</span>, s, <span class="hljs-string">&quot;   x=&quot;</span>, x)<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>panic发生时会依次执行：<br><br>1、逆序执行当前goroutine的defer链（recover从这里介入）<br><br>2、打印错误信息和调用堆栈<br><br>3、调用exit(2)结束整个进程<br></p>
+<p>不使用recover时panic就会直接执行到第三点，退出程序<br><br>使用recover后，panic会直接介入到recover，而不会直接退出程序</p>
 
                 
               </div>
@@ -391,8 +367,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>深入学习Go语言：数据结构-切片</div>
-      <div>http://example.com/2024/07/27/learn_go_slice/</div>
+      <div>整理常见的Go语言基础</div>
+      <div>http://example.com/2024/07/28/整理面试中常见的Go语言基础/</div>
     </div>
     <div class="license-meta">
       
@@ -404,7 +380,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年7月27日</div>
+          <div>2024年7月28日</div>
         </div>
       
       
@@ -436,18 +412,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/07/28/learn-go-map/" title="learn_go_map">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">learn_go_map</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/07/27/%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/" title="博客部署">
-                        <span class="hidden-mobile">博客部署</span>
+                      <a href="/2024/07/28/learn-go-map/" title="learn_go_map">
+                        <span class="hidden-mobile">learn_go_map</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
