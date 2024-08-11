@@ -1,0 +1,821 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/logo.png">
+  <link rel="icon" href="/img/logo.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Kelin">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="深入学习sqlsever数据库，包括存储过程、触发器、视图等等">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深入学习sqlsever数据库">
+<meta property="og:url" content="http://example.com/2023/04/11/%E6%B7%B1%E5%85%A5%E5%AD%A6%E4%B9%A0sqlsever%E6%95%B0%E6%8D%AE%E5%BA%93/index.html">
+<meta property="og:site_name" content="Kelin&#39;s Blog">
+<meta property="og:description" content="深入学习sqlsever数据库，包括存储过程、触发器、视图等等">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/247/wallhaven-vqjde5.jpg">
+<meta property="article:published_time" content="2023-04-11T03:25:08.000Z">
+<meta property="article:modified_time" content="2024-08-11T03:48:50.203Z">
+<meta property="article:author" content="Kelin">
+<meta property="article:tag" content="sql">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/247/wallhaven-vqjde5.jpg">
+  
+  
+  
+  <title>深入学习sqlsever数据库 - Kelin&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":"G-95RPP009VS"},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"6xvB04vZWPyPH4dqe4D8uQMU-gzGzoHsz","app_key":"fnf2ykjJKRhdx6etPnfZ2h8D","server_url":"https://6xvb04vz.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=G-95RPP009VS", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', 'G-95RPP009VS');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Kelin</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="深入学习sqlsever数据库"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-04-11 11:25" pubdate>
+          2023年4月11日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          6k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          50 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">深入学习sqlsever数据库</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="深入学习sqlsever数据库"><a href="#深入学习sqlsever数据库" class="headerlink" title="深入学习sqlsever数据库"></a>深入学习sqlsever数据库</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本文为学习笔记，可能有很多错误 <br><br>欢迎指正</p>
+<h2 id="学习数据库必须要搞懂的问题"><a href="#学习数据库必须要搞懂的问题" class="headerlink" title="学习数据库必须要搞懂的问题"></a>学习数据库必须要搞懂的问题</h2><p>1.学习数据库管理平台安装和使用<br>主要内容：能够安装数据库管理平台并且正常的使用<br>考核内容：了解sa用户与其他身份用户的区别，用户配置，远程访问配置<br>考核标准：数据库能正常使用并且能够远程访问（可在局域网中验证）</p>
+<p>2.保存使用过的sql语句<br>主要内容：对于验证执行过的SQL语句进行一个整理与保存<br>考核内容：每一个知识点都需要有相应的SQL语句<br>考核标准：能够将养成整理归纳验证使用过的SQL语句</p>
+<p>3.建立数据库<br>主要内容：熟悉create database语句以及图形化建库的使用<br>考核内容：熟练使用create database与图形化界面进行建库操作，包含对数据库编码方式的了解<br>考核标准：建立一个教务管理系统数据库</p>
+<p>4.一对多、多对多的关系<br>主要内容：了解并且理解实体关系中的一对多、多对多关系<br>考核内容：给出一个实际需求能够抽象出其实体之间的关系<br>考核标准：能够抽象出简单教务管理系统的实体关系</p>
+<p>5.建表<br>主要内容：通过SQL语句以及图形化界面来新建表<br>考核内容：表的命名规范、字段的数据类型限制以及字段的命名规范<br>考核标准：能够根据实际业务需求来创建一个简单的教务管理系统数据库表</p>
+<p>6.约束的作用<br>主要内容：查资料了解什么是约束，约束的作用<br>考核内容：讲解自己的理解<br>考核标准：能够正确表达约束的作用</p>
+<p>7.主键外键的约束<br>主要内容：主外键约束的SQL语句和图形界面操作<br>考核内容：建立起主外键<br>考核标准：能够建立起约束关系</p>
+<p>8.根据实际业务需求向数据库填充模拟数据<br>主要内容：<br>考核内容：<br>考核标准：</p>
+<p>9.备份还原，导入导出<br>主要内容：在图形界面上进行数据库的备份还原，导入导出<br>考核内容：数据库的备份还原，导入导出<br>考核标准：成功进行备份还原，导入导出<br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/wangwangwangMax/p/5417662.html">https://www.cnblogs.com/wangwangwangMax/p/5417662.html</a></p>
+<p>10.结构化查询语句的书写<br>主要内容：SQL语句的书写与使用（保存使用过的SQL语句）<br>考核内容：查看个人的SQL语句保存情况<br>考核标准：SQL语句是否完整</p>
+<p>11.储存过程和触发器<br>主要内容：学习储存过程和触发器的书写与使用，<br>考核内容：储存过程和触发器的格式与使用<br>考核标准：能够正确的运行并得到正确的输出<br>储存过程：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/sayhallotoyou/p/4282770.html">https://www.cnblogs.com/sayhallotoyou/p/4282770.html</a><br>和<a target="_blank" rel="noopener" href="https://www.w3cschool.cn/sqlserver/sqlserver-hw2328n6.html">https://www.w3cschool.cn/sqlserver/sqlserver-hw2328n6.html</a></p>
+<p>12.视图、关联查询<br>主要内容：通过SQL语句以及图形化界面来创建视图和建立关联<br>考核内容：创建视图和关联查询的SQL语句，创建视图和关联查询的图形界面流程<br>考核标准：SQL语句能正确的执行，图形化界面操作无误</p>
+<p>13.其他内容<br>a.数据库设计范式的了解<br>b.各类数据库的区别及优缺点<br>c.现阶段数据库的发展的了解</p>
+<h2 id="什么是一对多、多对多"><a href="#什么是一对多、多对多" class="headerlink" title="什么是一对多、多对多"></a>什么是一对多、多对多</h2><p>多对多（Many-to-Many，简称M：N）关系是关系型数据库中常见的一种关系类型。它表示两个实体（entity）之间存在多对多的关系。举个例子，一个学生可以选修多个课程，一个课程也可以被多个学生选修，这就是一个经典的多对多关系。<br>深入理解多对多关系需要理解以下几个概念：</p>
+<ol>
+<li>实体：在多对多关系中，实体通常是指两个或多个具有相同属性的对象，例如学生和课程。</li>
+<li>关联表：为了表示多对多关系，通常需要创建一个关联表，也称为中间表（Intermediate Table）或交叉引用表（Cross-Reference Table），用于存储两个实体之间的关系。关联表通常包含两个或多个外键（外键）</li>
+<li>主键和外键：主键是表中用于唯一标识每个记录的字段，通常是一个自增长的整数。外键是一个指向其他表中主键的字段，用于建立表与表之间的关联关系。<br>在理解了这些概念之后，我们可以进一步了解多对多关系的工作原理。例如，在上述学生和课程的例子中，我们可以创建一个名为“选课表”（Course_Student）的关联表，该表包含两个外键，分别指向学生表和课程表。当一个学生选修一个课程时，在选课表中插入一条记录，将学生的ID和课程的ID作为外键值。通过这种方式，我们可以轻松地查询出一个学生所选的所有课程，或者查询一个课程所有被哪些学生选修。<br>需要注意的是，在多对多关系中，关联表的设计和建立是非常重要的，需要遵循数据库规范化的原则，以确保数据的完整性和一致性。同时，在进行多对多关系的查询和操作时，需要熟练掌握SQL语言的JOIN操作和子查询等高级技巧。</li>
+</ol>
+<h2 id="触发器"><a href="#触发器" class="headerlink" title="触发器"></a>触发器</h2><p>在SQL中，ROLLBACK TRAN是用于撤销当前事务（Transaction）中的所有操作并回滚到事务开始前的状态。事务是指一系列数据库操作的逻辑单元，这些操作要么全部成功执行，要么全部失败回滚。ROLLBACK TRAN的作用是在事务执行过程中发生了错误或者意外情况时，撤销所有已执行的操作，确保数据库的完整性和一致性。<br>以下是一个简单的示例：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sql">sqlCopy code<br><span class="hljs-keyword">BEGIN</span> TRAN;<br><span class="hljs-keyword">UPDATE</span> table1 <span class="hljs-keyword">SET</span> column1 <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;value1&#x27;</span> <span class="hljs-keyword">WHERE</span> id <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;<br><span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">FROM</span> table2 <span class="hljs-keyword">WHERE</span> id <span class="hljs-operator">=</span> <span class="hljs-number">2</span>;<br><span class="hljs-keyword">ROLLBACK</span> TRAN;<br></code></pre></td></tr></table></figure>
+<p>在这个例子中，我们首先使用BEGIN TRAN开启一个事务，并执行了一个UPDATE和一个DELETE操作。如果在这个过程中出现了错误，可以使用ROLLBACK TRAN来撤销这两个操作，恢复到事务开始前的状态，从而避免了对数据库的损坏。<br>需要注意的是，ROLLBACK TRAN只能用于回滚当前事务中的操作，而不能回滚其他事务的操作。此外，当多个事务同时操作同一数据库时，需要通过锁机制来确保数据的一致性。</p>
+<p><strong>有些触发器的使用为了避免触发器和主键的冲突，需要去掉主键，那这个触发器有什么意义?</strong><br></p>
+<p>即使去掉主键约束，触发器仍然可以用于实现其他数据完整性约束或自动化业务逻辑。主键约束只是数据表中一种约束性条件，用于确保表中的行具有唯一性标识符。但在某些情况下，可能需要去掉主键约束，例如，需要允许表中存在重复的行，或者数据模型设计上不需要主键，而使用其他方式保证数据的唯一性。在这种情况下，可以使用触发器来实现其他数据完整性约束或自动化业务逻辑的需求。</p>
+<h2 id="存储过程"><a href="#存储过程" class="headerlink" title="存储过程"></a>存储过程</h2><h3 id="存储过程里面的-out-有什么作用"><a href="#存储过程里面的-out-有什么作用" class="headerlink" title="存储过程里面的 out 有什么作用"></a>存储过程里面的 out 有什么作用</h3><p>在存储过程中，OUT参数可以用于返回一个或多个输出值。当存储过程执行完成后，OUT参数的值将被赋给执行存储过程的程序或语句，可以使用这些输出值来做进一步的处理。<br>在上述存储过程中，有5个OUT参数，分别用来返回查询结果的不同字段值，例如@StudentNum用于返回学生的学号，@StudentName用于返回学生的姓名，以此类推。当存储过程执行完成后，这些OUT参数将被赋上相应的值，并可以在调用存储过程的程序或语句中使用这些输出值。</p>
+<h3 id="out-和putout-有什么区别吗"><a href="#out-和putout-有什么区别吗" class="headerlink" title="out 和putout 有什么区别吗"></a>out 和putout 有什么区别吗</h3><p>在存储过程中，OUT和OUTPUT都是用于声明输出参数的关键字，它们的主要作用都是将存储过程的执行结果传递给调用程序。不过，它们的使用方式略有不同：<br>● OUT：用于声明一个输出参数，可以将存储过程的执行结果赋值给该参数。在调用存储过程之前，需要声明该参数，并将其作为参数传递给存储过程。在存储过程中，可以通过给该参数赋值来传递执行结果。<br>● OUTPUT：也用于声明一个输出参数，但它可以将参数的值返回给调用程序。与OUT不同的是，调用程序需要将声明的参数传递给存储过程，并在调用完成后从该参数中获取返回值。<br>因此，OUT和OUTPUT的主要区别在于它们的返回值方式不同：OUT是通过赋值来传递执行结果，而OUTPUT是通过返回值来传递执行结果。</p>
+<h3 id="在存储过程中，CAST-是一种数据类型转换函数，用于将一个数据类型转换为另一个数据类型。它的语法为："><a href="#在存储过程中，CAST-是一种数据类型转换函数，用于将一个数据类型转换为另一个数据类型。它的语法为：" class="headerlink" title="在存储过程中，CAST 是一种数据类型转换函数，用于将一个数据类型转换为另一个数据类型。它的语法为："></a>在存储过程中，CAST 是一种数据类型转换函数，用于将一个数据类型转换为另一个数据类型。它的语法为：</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql">sqlCopy code<br><span class="hljs-built_in">CAST</span>(expression <span class="hljs-keyword">AS</span> data_type)<br></code></pre></td></tr></table></figure>
+<p>其中，expression 是要进行数据类型转换的表达式或列名，data_type 是目标数据类型。<br>例如，下面的存储过程使用 CAST 将 @SalesAmount 变量的数据类型从 decimal 转换为 int：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs sql">sqlCopy code<br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">PROCEDURE</span> dbo.GetOrdersBySalesAmount<br>    <span class="hljs-variable">@SalesAmount</span> <span class="hljs-type">decimal</span>(<span class="hljs-number">10</span>, <span class="hljs-number">2</span>),<br>    <span class="hljs-variable">@ResultsCount</span> <span class="hljs-type">int</span> <span class="hljs-keyword">OUT</span><br><span class="hljs-keyword">AS</span><br><span class="hljs-keyword">BEGIN</span><br>    <span class="hljs-keyword">SELECT</span> <span class="hljs-variable">@ResultsCount</span> <span class="hljs-operator">=</span> <span class="hljs-built_in">COUNT</span>(<span class="hljs-operator">*</span>)<br>    <span class="hljs-keyword">FROM</span> Sales.Orders<br>    <span class="hljs-keyword">WHERE</span> <span class="hljs-built_in">CAST</span>(OrderTotal <span class="hljs-keyword">AS</span> <span class="hljs-type">int</span>) <span class="hljs-operator">=</span> <span class="hljs-built_in">CAST</span>(<span class="hljs-variable">@SalesAmount</span> <span class="hljs-keyword">AS</span> <span class="hljs-type">int</span>)<br><span class="hljs-keyword">END</span><br></code></pre></td></tr></table></figure>
+<p>在上面的存储过程中，CAST(@SalesAmount AS int) 会将 @SalesAmount 的数据类型从 decimal 转换为 int，以便将其与 OrderTotal 列进行比较。</p>
+<h2 id="对数据的理解"><a href="#对数据的理解" class="headerlink" title="对数据的理解"></a>对数据的理解</h2><p>数据库是在应用软件级别研究数据的存储和操作<br>数据结构是在系统软件级别研究数据的存储和操作</p>
+<p>什么是连接？</p>
+<p>上面的按钮都是客户端<br>不是数据库<br>只是一个可以访问后台数据库的软件<br>库和访问库的软件是可以分开的</p>
+<p>sql语言是命令性的语言</p>
+<p>有了编程语言为什么还需要数据库<br>对内存数据操作时编程语言的强项，但是对硬盘数据操作却是编程语言的的弱项<br>对硬盘数据操作确实数据库的强项，是数据库研究的核心问题</p>
+<p>建议初学者从三个方面学习数据库<br>1.数据库是如何存储数据的<br>      字段、记录、表、约束（主键 外键 唯一键 非空 check default）<br>2.数据库是如何操作数据的<br>       insert update delete T-SQL  存储过程  函数  触发器<br>3.数据库是如何显示数据的<br>        select（重点的重点）</p>
+<p>BEGIN…END语句用于定义语句块，语句块由一组一起执行的SQL语句组成。 语句块也称为批处理。<br>换句话说，如果语句是句子，则BEGIN…END语句允许定义段落。</p>
+<p>GO是批处理的标志，是一条或多条SQL语句的集合，SQL Server将批处理语句编译成一个可执行单元，此单元称为执行计划。</p>
+<p>数据库设计范式是指用于规范化(relational normalization)数据库模式设计的一系列规则。规范化是指通过分解关系模式，将数据存储在多个表中以减少冗余数据并确保数据的一致性和完整性。范式的目标是在数据的存储过程中最小化数据冗余，并消除潜在的数据不一致性和不完整性问题。<br>以下是常见的数据库设计范式：</p>
+<ol>
+<li>第一范式（1NF）：确保每个属性都是原子的，不可再分解的。也就是每个属性只包含单个的值，而不是一组值。</li>
+<li>第二范式（2NF）：确保每个非主键属性都完全依赖于主键而不是部分依赖。也就是每个非主键属性都与主键直接相关，而不是与主键的某一部分相关。</li>
+<li>第三范式（3NF）：确保每个非主键属性都不依赖于其他非主键属性，也就是每个非主键属性都只与主键相关，而不是与其他非主键属性相关。<br>在实践中，通常只需要满足前两个范式（1NF和2NF）就足够了。但是，对于一些大型、复杂的数据库，使用更高级的范式可以确保数据更加规范和一致，减少数据冗余和不一致性的问题。</li>
+</ol>
+<p>是的，这些范式是按照一定的顺序来应用的，并且每个范式都是建立在前一个范式的基础上。因此，每个范式都依赖于前一个范式的规则，并扩展其概念。<br>具体来说，第一范式（1NF）是规范化的第一个阶段，它要求数据库表中的每个列都具有原子性。第二范式（2NF）是在1NF的基础上建立的，它要求每个非主键列完全依赖于主键，而不是仅依赖于部分主键。第三范式（3NF）是在2NF的基础上建立的，它要求每个非主键列不依赖于其他非主键列。<br>除此之外，还有其他的范式，如巴斯-科德范式（BCNF），第四范式（4NF），第五范式（5NF）等，它们在3NF的基础上进一步规范化数据库设计，更加强调数据的完整性和关联性。但是，在实践中，并不总是需要满足所有的范式。设计人员需要根据具体情况来选择最适合应用的规范化范式。</p>
+<p>数据库技术一直在不断地发展和进步。现在，随着云计算和大数据技术的兴起，数据库技术也在迎来一个新的发展阶段。以下是当前数据库发展的一些趋势和方向：</p>
+<ol>
+<li>云数据库：云数据库是指将数据库服务部署在云平台上，用户可以通过互联网访问和管理数据库，无需自己搭建和维护数据库系统。云数据库具有高可用性、可伸缩性和安全性等优点，越来越受到企业和用户的青睐。</li>
+<li>NoSQL数据库：NoSQL数据库是指非关系型数据库，其不使用传统的表格模型，而是采用其他数据结构，如文档、键值对、图形等，以实现更高效的数据存储和查询。NoSQL数据库适合大数据存储和分析场景，能够快速地处理海量数据。</li>
+<li>新SQL数据库：新SQL数据库是指既有传统关系型数据库的特点，又兼具分布式、高可用性和可伸缩性等特点。新SQL数据库的出现，旨在弥补传统关系型数据库在大数据环境下的不足，提供更好的性能和可扩展性。</li>
+<li>数据安全和隐私保护：随着数据泄漏和安全漏洞的不断发生，数据安全和隐私保护越来越受到关注。数据库开发者需要采取一系列措施，如加密、访问控制、数据脱敏等，来确保数据的安全性和隐私性。</li>
+<li>人工智能和机器学习：人工智能和机器学习技术的发展，为数据库技术带来了新的挑战和机遇。数据库开发者需要利用人工智能和机器学习技术，提高数据库的自主性、智能化和自我优化能力。<br>总的来说，数据库技术在不断地发展和演进，以适应新的业务场景和技术趋势。数据库开发者需要不断学习和更新技术，以应对不断变化的需求和挑战。</li>
+</ol>
+<p>目前市场上存在着多种类型的数据库，每种数据库都有自己的优点和缺点。选择哪一款数据库进行学习，应该根据实际需求和用途来选择。以下是几种常见的数据库类型和其特点：</p>
+<ol>
+<li>关系型数据库：关系型数据库是一种使用关系模型来组织和存储数据的数据库。它的最大特点是数据之间的关系，使用SQL语言进行数据管理。常见的关系型数据库有Oracle、MySQL、SQL Server等。优点是成熟稳定、标准化程度高、适合处理结构化数据，缺点是扩展性不强、处理大量数据时性能较低。</li>
+<li>非关系型数据库（NoSQL）：非关系型数据库是指使用非关系型数据模型来组织和存储数据的数据库。与关系型数据库不同，它不使用SQL语言进行数据管理，而是采用其他数据查询语言或API。NoSQL数据库的种类很多，常见的有MongoDB、Cassandra、Redis等。优点是适合处理非结构化或半结构化数据，支持高并发和分布式架构，缺点是数据一致性难以保证，难以进行复杂的查询和统计。</li>
+<li>内存数据库：内存数据库是将数据存储在内存中的数据库，其读写速度非常快，常用于需要高速处理的场景，如高速缓存、实时数据分析等。常见的内存数据库有Redis、Memcached等。优点是速度快、支持高并发、易于扩展，缺点是数据持久化困难、容易丢失数据。</li>
+<li>图数据库：图数据库是一种使用图模型来组织和存储数据的数据库，适合处理复杂的数据关系和图形数据。常见的图数据库有Neo4j、FlockDB等。优点是处理关系数据方便、容易进行图形分析，缺点是不适合处理结构化数据。<br>综上所述，选择哪一款数据库进行学习，应该根据实际需求和用途来选择。如果需要处理结构化数据，可以选择关系型数据库；如果需要处理非结构化数据或需要高并发和分布式架构，可以选择NoSQL数据库；如果需要高速处理或实时数据分析，可以选择内存数据库；如果需要处理复杂的数据关系或图形数据，可以选择图数据库。当然，作为初学者，建议从关系型数据库开始学习，因为它具有广泛的应用和较为完善的生态系统，易于入门和掌握。</li>
+</ol>
+<h2 id="约束"><a href="#约束" class="headerlink" title="约束"></a>约束</h2><p> 对一个表中的属性操作的限制叫做约束<br>单引号是标志字符串，双引号是用于起名<br>分类<br>主键约束<br>不允许重复元素 避免了数据的冗余<br>外键约束<br>通过外键约束从语法上保证了本事物所关联的其他事物是一定存在的<br>事物和事物之间的关系是通过外键实现的<br>check约束<br>对值进行一定的限定<br>意义：保证事物属性的取值在合法的范围之内<br>default约束<br>默认的值<br>意义：保证事物的属性一定有一个值<br>unique约束<br>主键和唯一键的区别是：<br>主键不允许为空<br>唯一键允许为空  </p>
+<p>在关系型数据库中，主键和外键是非常重要的概念，它们的作用如下：</p>
+<ol>
+<li>主键的作用：<br>主键是用于唯一标识一张表中每一行数据的一列或一组列，它的作用主要有以下几个方面：<br>● 确保数据的唯一性：主键要求每一条记录都有一个唯一的标识符，这可以防止数据重复或冲突。<br>● 提高数据查询的效率：主键可以作为索引（Index）来优化查询，加快数据检索的速度。<br>● 约束数据的完整性：主键可以作为数据完整性约束的一部分，保证数据的一致性和准确性。</li>
+<li>外键的作用：<br>外键是用于建立表与表之间的关联关系的，它的作用主要有以下几个方面：<br>● 建立表与表之间的关联关系：外键可以将两个或多个表之间的数据联系起来，使得它们能够进行关联查询和数据交互。<br>● 保持数据的一致性：外键可以限制在一个表中的数据只能与另一个表中的数据进行关联，避免出现无意义的数据关联。<br>● 约束数据的完整性：外键可以作为数据完整性约束的一部分，保证数据的一致性和准确性。<br>总之，主键和外键是关系型数据库设计的基本原则之一。它们能够保证数据的一致性、准确性和完整性，提高数据操作的效率和可靠性。</li>
+</ol>
+<h2 id="SQL-SELECT-DISTINCT语句"><a href="#SQL-SELECT-DISTINCT语句" class="headerlink" title="SQL SELECT DISTINCT语句"></a>SQL SELECT DISTINCT语句</h2><p>在表中，可能包含重复值<br>有时仅仅希望列出不同（distinct）值</p>
+<p>SELECT Company FROM Orders<br>可返回唯一不同的值</p>
+<p>where子句<br>SEKECT  列名称  FROM 表名称 where<br>列  运算符  值</p>
+<p>引号的使用<br>请注意，我们在例子中的条件值周围使用的是单引号。<br>SQL 使用单引号来环绕文本值（大部分数据库系统也接受双引号）。如果是数值，请不要使用引号。</p>
+<p>ORDER BY 语句<br>ORDER BY 语句用于根据指定的列对结果集进行排序。<br>ORDER BY 语句默认按照升序对记录进行排序。<br>如果您希望按照降序对记录进行排序，可以使用 DESC 关键字。</p>
+<h2 id="最后给一个练习"><a href="#最后给一个练习" class="headerlink" title="最后给一个练习"></a>最后给一个练习</h2><p>悉尼美术馆是位于澳大利亚悉尼的大型美术馆。博物馆收集各种艺术品，包括水彩画，油画，粉彩，版画，木炭和其他绘画，雕塑和陶瓷， I拼贴画和摄影作品。博物馆策划的作品范围从现代到文艺复兴时<br></p>
+<p>博物馆管理的艺术品已安全存储或摆放。艺术品可以在博物馆展出，也可以在澳大利亚各地的艺术品展览中展出。艺术品也被借给美术馆，美术馆然后向博物馆支付酬金。<br></p>
+<p>需要一个数据库来存储有关博物馆管理的艺术品的信息，包括艺术品的标题，类型和大小(出于规划展示的目的)，艺术品的当前位置(如果在博物馆展出)，信息等。有关艺术家的信息以及他&#x2F;她创作艺术品的时间，以及艺术品当前是借给美术馆还是在艺术品展览中展示。<br></p>
+<p>支付给博物馆的酬金通常是根据借来的物品在另一个画廊的时间长短来确定的，因此悉尼美术馆的馆长希望跟踪这些信息。策展人还想知道何时在特定的艺术展览中展示作品。<br></p>
+<p>您的任务是设计和开发一个数据库，以支持美术馆的信息系统需求。您不需要开发将使用该数据库的应用程序，但是您将需要构建一些查询</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/sql/" class="category-chain-item">sql</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/sql/" class="print-no-link">#sql</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>深入学习sqlsever数据库</div>
+      <div>http://example.com/2023/04/11/深入学习sqlsever数据库/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Kelin</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年4月11日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/05/11/%E5%9F%8E%E5%B8%82%E4%BA%A4%E9%80%9A%E5%AE%89%E5%85%A8%E7%B3%BB%E7%BB%9F%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/" title="城市交通安全系统数据库设计">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">城市交通安全系统数据库设计</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/07/13/%E6%89%93%E5%8C%85python%E7%9A%84%E6%96%B9%E6%B3%95/" title="打包python的方法">
+                        <span class="hidden-mobile">打包python的方法</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"6xvB04vZWPyPH4dqe4D8uQMU-gzGzoHsz","appKey":"fnf2ykjJKRhdx6etPnfZ2h8D","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
