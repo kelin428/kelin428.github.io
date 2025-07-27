@@ -19,24 +19,24 @@
   <meta name="author" content="Kelin">
   <meta name="keywords" content="">
   
-    <meta name="description" content="使用GitHub Pages + Hexo搭建个人博客网站">
+    <meta name="description" content="ʹ��GitHub Pages + Hexo����˲�����վ">
 <meta property="og:type" content="article">
-<meta property="og:title" content="博客部署">
-<meta property="og:url" content="http://example.com/2022/06/16/%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/index.html">
+<meta property="og:title" content="MYSQL�ܽ�һ ���ݿ������Ӧ��">
+<meta property="og:url" content="http://example.com/2025/07/15/mysql%E6%80%BB%E7%BB%93%EF%BC%88%E4%B8%80%EF%BC%89/index.html">
 <meta property="og:site_name" content="Kelin&#39;s Blog">
-<meta property="og:description" content="使用GitHub Pages + Hexo搭建个人博客网站">
+<meta property="og:description" content="ʹ��GitHub Pages + Hexo����˲�����վ">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/wallhaven-exrqrr.jpg">
-<meta property="article:published_time" content="2022-06-16T09:48:25.000Z">
-<meta property="article:modified_time" content="2024-08-11T03:23:12.642Z">
+<meta property="article:published_time" content="2025-07-15T09:48:25.000Z">
+<meta property="article:modified_time" content="2025-07-15T16:40:05.913Z">
 <meta property="article:author" content="Kelin">
-<meta property="article:tag" content="blog">
+<meta property="article:tag" content="mysql">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/img/wallhaven-exrqrr.jpg">
   
   
   
-  <title>博客部署 - Kelin&#39;s Blog</title>
+  <title>MYSQL�ܽ�һ ���ݿ������Ӧ�� - Kelin&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -229,7 +229,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="博客部署"></span>
+            <span id="subtitle" data-typed-text="MYSQL�ܽ�һ ���ݿ������Ӧ��"></span>
           
         </div>
 
@@ -240,8 +240,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-06-16 17:48" pubdate>
-          2022年6月16日 下午
+        <time datetime="2025-07-15 17:48" pubdate>
+          2025年7月15日 下午
         </time>
       </span>
     
@@ -252,7 +252,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.2k 字
+          16 字
         
       </span>
     
@@ -263,7 +263,7 @@
         
         
         
-          11 分钟
+          1 分钟
         
       </span>
     
@@ -309,121 +309,14 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">博客部署</h1>
+            <h1 id="seo-header">MYSQL�ܽ�һ ���ݿ������Ӧ��</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="使用GitHub-Pages-Hexo搭建个人博客网站"><a href="#使用GitHub-Pages-Hexo搭建个人博客网站" class="headerlink" title="使用GitHub Pages + Hexo搭建个人博客网站"></a>使用GitHub Pages + Hexo搭建个人博客网站</h1><h2 id="一、准备工作"><a href="#一、准备工作" class="headerlink" title="一、准备工作"></a>一、准备工作</h2><ol>
-<li><p><strong>GitHub账号</strong><br>需要有一个GitHub账号，没有的话到 <a target="_blank" rel="noopener" href="https://github.com/">官网</a> 申请一个。注册很简单，不懂的话可以参考 <a target="_blank" rel="noopener" href="https://github.com/join">GitHub申请账号</a>。</p>
-</li>
-<li><p><strong>安装Git</strong><br>在自己电脑上安装好Git，Hexo部署到GitHub时要用。网上找篇教程或者参考 <a target="_blank" rel="noopener" href="https://git-scm.com/book/zh/v2">Git安装(Windows)</a>。</p>
-</li>
-<li><p><strong>安装NodeJS</strong><br>在自己电脑上安装好NodeJS，Hexo是基于NodeJS编写的，所以需要安装NodeJS和npm工具。网上找篇教程或者参考 <a target="_blank" rel="noopener" href="https://nodejs.org/zh-cn/">NodeJS安装及配置(Windows)</a>。</p>
-</li>
-</ol>
-<h2 id="二、创建仓库"><a href="#二、创建仓库" class="headerlink" title="二、创建仓库"></a>二、创建仓库</h2><p>在GitHub上创建一个新的代码仓库用于保存我们的网页。</p>
-<ol>
-<li><p>点击<code>Your repositories</code>，进入仓库页面。</p>
-</li>
-<li><p>点击<code>New</code>按钮，进入仓库创建页面。</p>
-</li>
-<li><p>填写仓库名，格式必须为&lt;用户名&gt;.github.io，然后点击<code>Create repository</code>。</p>
-</li>
-<li><p>点击<code>creating a new file</code>创建一个新文件，作为我们网站的主页。</p>
-</li>
-<li><p>新文件的名字必须为<code>index.html</code>，内容先随便写一个简单的，内容示例如下，填写之后点击<code>Commit new file</code>提交。</p>
- <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>yaorongke<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>yaorongke的个人主页<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Hello ~<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure></li>
-</ol>
-<p>GitHub Pages中找到我们主页的地址为 <code>https://&lt;用户名&gt;.github.io/</code></p>
-<p>浏览器中访问，展示成功。</p>
-<p>这里创建的网页是非常简陋的，只是为了演示下GitHub Pages的使用方式。</p>
-<h2 id="三、安装Hexo"><a href="#三、安装Hexo" class="headerlink" title="三、安装Hexo"></a>三、安装Hexo</h2><p>我们采用Hexo来创建我们的博客网站，Hexo 是一个基于NodeJS的静态博客网站生成器，使用Hexo不需开发，只要进行一些必要的配置即可生成一个个性化的博客网站，非常方便。点击进入 <a target="_blank" rel="noopener" href="https://hexo.io/">官网</a>。</p>
-<ol>
-<li><p><strong>安装 Hexo</strong></p>
- <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">npm install -g hexo-cli<br></code></pre></td></tr></table></figure>
-</li>
-<li><p><strong>查看版本</strong></p>
- <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">hexo -v<br></code></pre></td></tr></table></figure>
-</li>
-<li><p><strong>创建一个项目 hexo-blog 并初始化</strong></p>
- <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sh">hexo init hexo-blog<br><span class="hljs-built_in">cd</span> hexo-blog<br>npm install<br></code></pre></td></tr></table></figure>
-</li>
-<li><p><strong>本地启动</strong></p>
- <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh">hexo g<br>hexo server<br></code></pre></td></tr></table></figure></li>
-</ol>
-<p>浏览器访问 <code>http://localhost:4000</code>，页面默认主图风格如下。</p>
-<h2 id="四、更换主题"><a href="#四、更换主题" class="headerlink" title="四、更换主题"></a>四、更换主题</h2><p>Hexo 默认的主题不太好看，不过官方提供了数百种主题供用户选择，可以根据个人喜好更换，<a target="_blank" rel="noopener" href="https://hexo.io/themes/">官网主题</a>。</p>
-<p>这里介绍两个主题的使用方法，Next 和 Fluid，个人比较喜欢Fluid，后面章节的功能也是以 Fluid 为基础进行讲解的。</p>
-<h3 id="1-NexT-主题"><a href="#1-NexT-主题" class="headerlink" title="1. NexT 主题"></a>1. NexT 主题</h3><p><strong>安装主题</strong></p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-built_in">cd</span> hexo-blog<br>git <span class="hljs-built_in">clone</span> https://github.com/iissnan/hexo-theme-next themes/next<br></code></pre></td></tr></table></figure>
-
-<h2 id="使用-NexT-主题"><a href="#使用-NexT-主题" class="headerlink" title="使用 NexT 主题"></a>使用 NexT 主题</h2><ol>
-<li><p><strong>安装主题</strong></p>
- <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-built_in">cd</span> hexo-blog<br>git <span class="hljs-built_in">clone</span> https://github.com/iissnan/hexo-theme-next themes/next<br></code></pre></td></tr></table></figure>
-</li>
-<li><p><strong>使用 NexT 主题</strong></p>
-<p> 打开 <code>_config.yml</code> 文件，该文件为站点配置文件。</p>
-<p> 将主题修改为 <code>next</code>：</p>
- <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">theme:</span> <span class="hljs-string">next</span><br></code></pre></td></tr></table></figure>
-</li>
-<li><p><strong>本地启动</strong></p>
- <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh">hexo g -d<br>hexo s<br></code></pre></td></tr></table></figure></li>
-</ol>
-<h2 id="2-Fluid主题"><a href="#2-Fluid主题" class="headerlink" title="2. Fluid主题"></a>2. Fluid主题</h2><p>以下安装步骤摘自 <a target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/">Fluid官网</a></p>
-<ol>
-<li><p><strong>安装主题</strong></p>
-<p> 下载最新 release 版本解压到 <code>themes</code> 目录，并将解压出的文件夹重命名为 <code>fluid</code>。</p>
-</li>
-<li><p><strong>指定主题</strong></p>
-<p> 修改 Hexo 博客目录中的 <code>_config.yml</code>：</p>
- <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">theme:</span> <span class="hljs-string">fluid</span>  <span class="hljs-comment"># 指定主题</span><br><span class="hljs-attr">language:</span> <span class="hljs-string">zh-CN</span>  <span class="hljs-comment"># 指定语言，会影响主题显示的语言，按需修改</span><br></code></pre></td></tr></table></figure>
-</li>
-<li><p><strong>创建「关于页」</strong></p>
-<p> 首次使用主题的「关于页」需要手动创建：</p>
- <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">hexo new page about<br></code></pre></td></tr></table></figure>
-
-<p> 创建成功后，编辑博客目录下 <code>/source/about/index.md</code>，添加 <code>layout</code> 属性。</p>
-<p> 修改后的文件示例如下：</p>
- <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs markdown">---<br>title: about<br>date: 2020-02-23 19:20:33<br><span class="hljs-section">layout: about</span><br><span class="hljs-section">---</span><br><br>这里写关于页的正文，支持 Markdown, HTML<br></code></pre></td></tr></table></figure>
-</li>
-<li><p><strong>本地启动</strong></p>
- <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh">hexo g -d<br>hexo s<br></code></pre></td></tr></table></figure>
-
-<p> 浏览器访问 <code>http://localhost:4000</code>，Fluid主题风格页面如下。</p>
-</li>
-</ol>
-<h2 id="五、创建文章"><a href="#五、创建文章" class="headerlink" title="五、创建文章"></a>五、创建文章</h2><p>修改 Hexo 博客目录中的 <code>_config.yml</code>，打开这个配置是为了在生成文章的时候生成一个同名的资源目录用于存放图片文件。</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">post_asset_folder:</span> <span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure>
-
-<p>执行如下命令创建一篇新文章，名为《测试文章》：</p>
-<p>hexo new post 测试文章</p>
-<p>执行完成后在 <code>source/_posts</code> 目录下生成了一个 <code>md</code> 文件和一个同名的资源目录（用于存放图片）。</p>
-<p>在资源目录 <code>测试文章</code> 中放一张图片 <code>test.png</code>。</p>
-<p>在 <code>测试文章.md</code> 中添加内容如下，演示了图片的三种引用方式。第一种为官方推荐用法，第二种为 Markdown 语法，第三种和前两种图片存放位置不一样，是将图片放在 <code>source/images</code> 目录下。这三种写法在 <code>md</code> 文件中图片是无法显示的，但是在页面上能正常显示。</p>
-<p>图片的引入方式可参考官方文档 <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/asset-folders.html%EF%BC%8C%E6%9C%89%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D%E3%80%82">https://hexo.io/zh-cn/docs/asset-folders.html，有详细介绍。</a></p>
-<hr>
-<p>title: 测试文章<br>date: 2021-06-10 16:35:20<br>tags:</p>
-<ul>
-<li>原创<br>categories:</li>
-<li>Java</li>
-</ul>
-<hr>
-<p>这是一篇测试文章</p>
-
-
-<p><img src="/2022/06/16/%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/test.png" srcset="/img/loading.gif" lazyload alt="图片引用方法二"></p>
-<p><img src="/images/test.png" srcset="/img/loading.gif" lazyload alt="图片引用方法三"></p>
-<p>本地启动</p>
-<p>hexo g -d<br>hexo s</p>
-<h2 id="六、个性化页面展示"><a href="#六、个性化页面展示" class="headerlink" title="六、个性化页面展示"></a>六、个性化页面展示</h2><p>页面的标题等位置显示默认的文字，可以改下显示一些个性化的信息。</p>
-<ol>
-<li><strong>浏览器tab页名称</strong> 修改根目录下 <code>_config.yml</code> 中的 <code>title</code> 字段。</li>
-<li><strong>博客标题</strong> 主题目录 <code>themes/fluid</code> 下 <code>_config.yml</code> 中的 <code>blog_title</code> 字段。</li>
-<li><strong>主页正中间的文字</strong> 主题目录 <code>themes/fluid</code> 下 <code>_config.yml</code> 中的 <code>text</code> 字段。</li>
-</ol>
-<p>修改好配置后，页面效果如下，可以看到现在显示的内容变成了我们的个人信息。</p>
-
+                <h2 id="������֪"><a href="#������֪" class="headerlink" title="������֪"></a>������֪</h2><h3 id="�����˽�"><a href="#�����˽�" class="headerlink" title="�����˽�"></a>�����˽�</h3><p>MYSQL��һ����Դ���������Ĺ�ϵ�����ݿ⣬�㷺����Web�����Ӧ�ô洢���ݡ�</p>
+<h3 id="�����˽�-1"><a href="#�����˽�-1" class="headerlink" title="�����˽�"></a>�����˽�</h3><p>MYSQL�����ܷǳ��ĺ�</p>
+<h2 id="�������"><a href="#�������" class="headerlink" title="�������"></a>�������</h2><h2 id="�����﷨"><a href="#�����﷨" class="headerlink" title="�����﷨"></a>�����﷨</h2><h3 id="DDL-���ݶ�������"><a href="#DDL-���ݶ�������" class="headerlink" title="DDL ���ݶ�������"></a>DDL ���ݶ�������</h3><h3 id="DML-���ݲ�������"><a href="#DML-���ݲ�������" class="headerlink" title="DML ���ݲ�������"></a>DML ���ݲ�������</h3><h3 id="DQL-���ݲ�ѯ����"><a href="#DQL-���ݲ�ѯ����" class="headerlink" title="DQL ���ݲ�ѯ����"></a>DQL ���ݲ�ѯ����</h3><h3 id="DCL-���ݿ�������"><a href="#DCL-���ݿ�������" class="headerlink" title="DCL ���ݿ�������"></a>DCL ���ݿ�������</h3><h3 id="TCL-�����������"><a href="#TCL-�����������" class="headerlink" title="TCL �����������"></a>TCL �����������</h3><h2 id="TAQ"><a href="#TAQ" class="headerlink" title="TAQ"></a>TAQ</h2><h3 id="ʲo�n�ϵ�����ݿ⣿"><a href="#ʲo�n�ϵ�����ݿ⣿" class="headerlink" title="ʲô�ǹ�ϵ�����ݿ⣿"></a>ʲô�ǹ�ϵ�����ݿ⣿</h3><h3 id="MYSQL��������o����Ϊʲo�a�"><a href="#MYSQL��������o����Ϊʲo�a�" class="headerlink" title="MYSQL��������ô����Ϊʲô�ã�"></a>MYSQL��������ô����Ϊʲô�ã�</h3>
                 
               </div>
             
@@ -435,7 +328,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/blog/" class="print-no-link">#blog</a>
+        <a href="/tags/mysql/" class="print-no-link">#mysql</a>
       
     </div>
   
@@ -447,8 +340,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>博客部署</div>
-      <div>http://example.com/2022/06/16/博客部署/</div>
+      <div>MYSQL�ܽ�һ ���ݿ������Ӧ��</div>
+      <div>http://example.com/2025/07/15/mysql总结（一）/</div>
     </div>
     <div class="license-meta">
       
@@ -460,7 +353,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年6月16日</div>
+          <div>2025年7月15日</div>
         </div>
       
       
@@ -492,18 +385,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/06/17/%E8%A7%A3%E5%86%B3hexo%E5%8D%9A%E6%96%87%E5%9B%BE%E7%89%87%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%9A%84%E6%96%B9%E6%B3%95/" title="解决hexo博文图片不显示的方法">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">解决hexo博文图片不显示的方法</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/06/16/markdown%E5%AD%A6%E4%B9%A0/" title="���дһƪ�������������Markdown����">
-                        <span class="hidden-mobile">���дһƪ�������������Markdown����</span>
+                      <a href="/2024/07/28/%E6%95%B4%E7%90%86%E9%9D%A2%E8%AF%95%E4%B8%AD%E5%B8%B8%E8%A7%81%E7%9A%84Go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/" title="整理常见的Go语言基础">
+                        <span class="hidden-mobile">整理常见的Go语言基础</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
